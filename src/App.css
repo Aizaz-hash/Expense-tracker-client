@@ -1,0 +1,12 @@
+.App{
+  background-color: #40005d;
+  width: 100rem;
+  max-width: 100%;
+}
+
+.App h2{
+  color: white;
+  display: flex;
+  padding-left: 16rem;
+  align-items: center;
+}
