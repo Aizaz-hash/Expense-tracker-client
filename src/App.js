@@ -1,9 +1,8 @@
-import ExpnseItem from "./components/ExpenseItem";
-import GetExpenseData from "./components/GetExpenseData";
+import GetExpenseData from "./components/Expenses/GetExpenseData";
 import './App.css'
-
-import Card from "./components/Card";
-function App() {
+import Card from "./components/UI/Card";
+import NewExpense from "./components/New Expense/NewExpense";
+function App() { 
   const expenses = [
     {
       id: "e1",
@@ -31,15 +30,18 @@ function App() {
     },
   ];
 
-  console.log(expenses);
+
+
+  //receiving props from child
+  const addExpenseHandler = (expense) =>{
+
+    console.log(expenses);
+  }
 
   return (
     <Card className="App">
-      <h2>Welcome to Expense App </h2>
-
-      <GetExpenseData
-      expenseData = {expenses}
-      />
+      <NewExpense new onNewExpenseData =  {addExpenseHandler}/>
+      <GetExpenseData expenseData = {expenses}/>
     </Card>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import Card from './Card';
-import ExpenseItem from './ExpenseItem'
+import Card from '../UI/Card';
+import ExpenseItem from '../Expenses/ExpenseItem'
 import './ExpenseItem.css'
 
 export default function GetExpenseData(props) {
