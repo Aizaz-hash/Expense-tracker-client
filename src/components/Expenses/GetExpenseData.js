@@ -22,24 +22,33 @@ export default function GetExpenseData(props) {
   //child to parent props 
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
-
-
-
   };
+
+
+
+  //cleanest conditional JSK components inside js code
+  let expenseContent  = <p>No Expenses Found !</p>;
+
+  if (FilteredArray.length>0)
+  {
+    expenseContent =  FilteredArray.map(myexpense => 
+      <ExpenseItem  
+      key = {myexpense.id}
+      title={myexpense.title} 
+      amount={myexpense.amount} 
+      date={myexpense.date}/> 
+  )
+
+  }
+
+
     return (
 
           <Card className='expenses'>
                 <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
 
-                    {
-                    FilteredArray.map(myexpense => 
-
-                         <ExpenseItem  
-                         key = {myexpense.id}
-                         title={myexpense.title} 
-                         amount={myexpense.amount} 
-                         date={myexpense.date}/> 
-                     )}                    
+                {/* Calling Expense Data from above components*/}
+                {expenseContent}
 
           </Card>)};
 
