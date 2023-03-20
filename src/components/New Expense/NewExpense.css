@@ -15,9 +15,12 @@
     padding: 1rem 2rem;
     border: 1px solid #40005d;
     background-color: #40005d;
+    border-color: white;
     color: white;
     border-radius: 12px;
     margin-right: 1rem;
+    text-align: center;
+  
   }
   
   .new-expense button:hover,

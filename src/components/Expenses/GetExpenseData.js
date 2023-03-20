@@ -1,55 +1,45 @@
-import React from 'react'
+import React , {useState} from 'react'
 import Card from '../UI/Card';
 import ExpenseItem from '../Expenses/ExpenseItem'
 import './ExpenseItem.css'
+import ExpensesFilter from './ExpenseFilter';
 
 export default function GetExpenseData(props) {
 
     const myexpenses = props.expenseData;
+    const [filteredYear, setFilteredYear] = useState('');
+    
+
+
+
+    //filtering array according to year
+    const FilteredArray = myexpenses.filter(filterExpenses =>{
+     return filterExpenses.date.getFullYear().toString()===filteredYear;
+  })    
+
+
+
+  //child to parent props 
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+
+
+
+  };
     return (
 
-        <Card className='expenses'>
-            <ExpenseItem title={
-                     myexpenses[0].title
-                }
-                amount={
-                     myexpenses[0].amount
-                }
-                date={
-                     myexpenses[0].date
-            }></ExpenseItem>
+          <Card className='expenses'>
+                <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
 
-            <ExpenseItem title={
-                     myexpenses[1].title
-                }
-                amount={
-                     myexpenses[1].amount
-                }
-                date={
-                     myexpenses[1].date
-            }></ExpenseItem>
+                    {
+                    FilteredArray.map(myexpense => 
 
-            <ExpenseItem title={
-                     myexpenses[2].title
-                }
-                amount={
-                     myexpenses[2].amount
-                }
-                date={
-                     myexpenses[2].date
-            }></ExpenseItem>
+                         <ExpenseItem  
+                         key = {myexpense.id}
+                         title={myexpense.title} 
+                         amount={myexpense.amount} 
+                         date={myexpense.date}/> 
+                     )}                    
 
-            <ExpenseItem title={
-                     myexpenses[3].title
-                }
-                amount={
-                     myexpenses[3].amount
-                }
-                date={
-                     myexpenses[3].date
-            }></ExpenseItem>
-        </Card>
+          </Card>)};
 
-
-    )
-}
