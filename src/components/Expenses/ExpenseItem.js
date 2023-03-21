@@ -7,7 +7,9 @@ import React from "react";
 function ExpenseItem(props) { 
     
     return (
-        <Card className="expense-item">
+
+        <li>
+             <Card className="expense-item">
             <ExpenseDate mydate={
                 props.date
             }/>
@@ -22,7 +24,9 @@ function ExpenseItem(props) {
             </div>
 
         </Card>
-    );
+
+        </li>
+           );
 
 }
 
