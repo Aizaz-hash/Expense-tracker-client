@@ -10,25 +10,25 @@ const dummyData = [
     id: "e1",
     title: "Toilet Paper",
     amount: 95,
-    date: new Date(2022, 10, 26),
+    date: new Date(2022, 1, 26),
   },
   {
     id: "e2",
     title: "TV",
     amount: 300,
-    date: new Date(2023, 10, 26),
+    date: new Date(2023, 3, 26),
   },
   {
     id: "e3",
     title: "PS4",
     amount: 500,
-    date: new Date(2024, 10, 26),
+    date: new Date(2024, 7, 26),
   },
   {
     id: "e4",
     title: "Car Insurance",
     amount: 95,
-    date: new Date(2024, 10, 26),
+    date: new Date(2024, 11, 26),
   },
 
   {

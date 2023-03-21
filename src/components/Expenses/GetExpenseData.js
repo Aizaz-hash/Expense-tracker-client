@@ -3,6 +3,7 @@ import Card from '../UI/Card';
 import './ExpenseItem.css'
 import ExpensesFilter from './ExpenseFilter';
 import ExpenseList from './ExpensesList';
+import Expenseschart from './Expenseschart';
 
 export default function GetExpenseData(props) {
 
@@ -30,7 +31,7 @@ export default function GetExpenseData(props) {
                 <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
 
                 {/* Calling Expense Data from above components*/}
-
+                <Expenseschart expense = {FilteredArray}/>
                 <ExpenseList expenseItems = {FilteredArray} />
                 {/* {expenseContent} */}
 
