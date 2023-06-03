@@ -17,7 +17,7 @@
     font: inherit;
     padding: 0.5rem;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid #21005d;
     width: 20rem;
     max-width: 100%;
   }
@@ -26,4 +26,17 @@
     text-align: right;
     border-color: white;
     text-decoration:solid;
+  }
+
+  
+
+  .new-expense__action {
+    text-align: right;
+    border-color: white;
+    text-decoration:solid;
+
+    .new-expense__actions_cancel{
+      background-color: #E83845;
+
+    }
   }

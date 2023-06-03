@@ -4,12 +4,19 @@
     width: 5.5rem;
     height: 5.5rem;
     border: 1px solid #ececec;
-    background-color: #2a2a2a;
+    background-color: #21005d;
     color: white;
     border-radius: 12px;
     align-items: center;
     justify-content: center;
   }
+
+  .new-expense button:hover,
+  .new-expense button:active {
+    background-color: #746ab0;
+
+  }
+
   
   .expense-date__month {
     font-size: 0.75rem;
