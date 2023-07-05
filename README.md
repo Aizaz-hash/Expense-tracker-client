@@ -1,2 +1,2 @@
 App Deployed at 
-https://react-expense-tracker.herokuapp.com/
+https://silly-malabi-7ce8d4.netlify.app/
