@@ -2,48 +2,33 @@ import GetExpenseData from "./components/Expenses/GetExpenseData";
 import './App.css'
 import Card from "./components/UI/Card";
 import NewExpense from "./components/New Expense/NewExpense"; 
+import axios from "axios";
 
-import { useState } from "react";
+import { useState , useEffect} from "react";
 
-const dummyData = [
-  {
-    id: "e1",
-    title: "Toilet Paper",
-    amount: 95,
-    date: new Date(2022, 1, 26),
-  },
-  {
-    id: "e2",
-    title: "TV",
-    amount: 300,
-    date: new Date(2023, 3, 26),
-  },
-  {
-    id: "e3",
-    title: "PS4",
-    amount: 500,
-    date: new Date(2024, 7, 26),
-  },
-  {
-    id: "e4",
-    title: "Car Insurance",
-    amount: 95,
-    date: new Date(2024, 11, 26),
-  },
 
-  {
-    id: "e5",
-    title: "Gaming Laptop",
-    amount: 95,
-    date: new Date(2025, 10, 26),
-  },
-  
-];
 
 
 function App() { 
 
- const [expenses , setExpenses] = useState(dummyData)
+  const [expenses , setExpenses] = useState([])
+
+
+  useEffect(() => {
+    fetchData();
+  }, onloadstart);
+
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('https://exptracapi.azurewebsites.net/api/ExpenseTracker');
+
+      // console.log(response.data.value)
+      setExpenses(response.data.value); // Assuming the response is an array
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
   //receiving props from child
   const addExpenseHandler = (expense) =>{
@@ -58,7 +43,9 @@ function App() {
 
   return (
     <Card className="App">
-      <NewExpense new onNewExpenseData =  {addExpenseHandler}/>
+      <NewExpense onNewExpenseData =  {addExpenseHandler}/>
+
+      {/* seeding expense data to list and filter rendiring  */}
       <GetExpenseData expenseData = {expenses}/>
     </Card>
   );

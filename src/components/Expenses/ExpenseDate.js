@@ -4,14 +4,24 @@ import Card from '../UI/Card';
 
 export default function ExpenseDate(props) {
 
-   const day = props.mydate.toLocaleString('en-US' , {day:'2-digit'});
-    const month = props.mydate.toLocaleString('en-US' , {month:'short'});
-    const year = props.mydate.toLocaleString('en-US' , {year:'numeric'} );
+  const day = props.mydate; // Assuming the date value is in the "date" property
+  var convertedDay = new Date(day);
+  convertedDay = convertedDay.toLocaleString('en-US' , {day:'2-digit'});
+
+  const month = props.mydate; // Assuming the date value is in the "date" property
+  var convertedmonth = new Date(month);
+  convertedmonth= convertedmonth.toLocaleString('en-US' , {month:'short'});
+
+  const year = props.mydate; // Assuming the date value is in the "date" property
+  var convertedyear= new Date(year);
+  convertedyear = convertedyear.toLocaleString('en-US' , {year:'numeric'} );
+
+
   return (
     <Card className='expense-date'>
-    <div className='expense-date__day'>{day}</div>
-      <div className='expense-date__month' >{month}</div>
-      <div className='expense-date__year'>{year}</div>
+    <div className='expense-date__day'>{convertedDay}</div>
+      <div className='expense-date__month' >{convertedmonth}</div>
+      <div className='expense-date__year'>{convertedyear}</div>
 
     </Card>  )
 }

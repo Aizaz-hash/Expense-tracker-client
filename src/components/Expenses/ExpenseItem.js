@@ -5,14 +5,15 @@ import Card from "../UI/Card";
 import React from "react";
 
 function ExpenseItem(props) { 
+
+    const dateValue = props.date; // Assuming the date value is in the "date" property
+    const converted = new Date(dateValue);
     
     return (
 
         <li>
              <Card className="expense-item">
-            <ExpenseDate mydate={
-                props.date
-            }/>
+            <ExpenseDate mydate={ converted }/>
 
             <div className="expense-item__description">
                 <h2>{

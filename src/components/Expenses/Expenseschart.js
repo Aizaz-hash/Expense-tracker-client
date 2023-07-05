@@ -22,9 +22,14 @@ const Expenseschart = (props)=>{
     
     ];
 
-    for (const expenses of props.expense){
-        const expenseMonth = expenses.date.getMonth();
 
+    for (const expenses of props.expense){
+
+        const date = expenses.date; // Assuming the date value is in the "date" property
+
+        var converteDate = new Date(date);
+
+        const expenseMonth = converteDate.getMonth();
 
         chartDataPoints[expenseMonth].value +=expenses.amount;
     };

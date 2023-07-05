@@ -1,12 +1,16 @@
 import React , {useState} from "react";
 import './ExpenseForm.css'
 
+import axios from "axios";
+import App from "../../App";
+
 const ExpenseForm = (props)=>
 {
 
     const [enteredTitle , setEnteredTitle] = useState('');
     const [enteredAmount , setEnteredAmount] = useState('');
     const [enteredDate , setEnteredDate] = useState('');
+    const [postFlag , setpostFlag] = useState(true);
 
     
 //title hadnler
@@ -28,20 +32,32 @@ const ExpenseForm = (props)=>
         setEnteredDate(event.target.value)
 
     }
-
-    //form submission
     const submitHandler = (event)=>{
 
         event.preventDefault();
 
-       const  expenseData = {
-            title : enteredTitle , 
-            amount :  +enteredAmount ,
-            date :  new Date(enteredDate) 
+        if (postFlag === true)
+
+        {
+            axios({
+                method: 'post',
+                url: 'https://exptracapi.azurewebsites.net/api/ExpenseTracker',
+                data: {
+                  title: enteredTitle,
+                  amount : enteredAmount,
+                  date : new Date(enteredDate)
+                }
+              })
+    
+              setpostFlag(false)
         }
 
-        //child to parent props
-        props.onNewExpenseEntry(expenseData);
+        else
+        {
+            <App></App>
+        }
+
+
     };
 
 
@@ -66,7 +82,7 @@ const ExpenseForm = (props)=>
 
                     <div className="new-expense__control">
                         <label >Date</label>
-                        <input type="date" min = "2023-01-01" max="2026-12-31" onChange={dateChangeHandler} value={enteredDate}></input>
+                        <input type="datetime-local" min = "2023-01-01" max="2026-12-31" onChange={dateChangeHandler} value={enteredDate}></input>
                     </div>
                 </div> 
 
